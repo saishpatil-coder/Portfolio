@@ -29,7 +29,7 @@ export default function Navbar() {
           right:isClick?"-100%":"10px"
         }} >
           <li><NavLink to="/">Projects</NavLink></li>
-          <li><NavLink to="#">MiniProjects</NavLink></li>
+          <li><NavLink to="/tictactoe">MiniProjects</NavLink></li>
           <li><NavLink to="/skills">About Me</NavLink></li>
           <li><NavLink to="#">About Us</NavLink></li>
         </ul>

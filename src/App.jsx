@@ -23,7 +23,8 @@ function App() {
       children: [
         { path: "skills", element: <Skills /> },
         // { path: "/", element: <Profile /> }
-        { path: "/", element: <TicTac></TicTac> }
+        { path: "/", element: <Profile></Profile> },
+        { path: "tictactoe" , element : <TicTac></TicTac>}
       ]
     }
   ]);
