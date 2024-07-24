@@ -115,6 +115,7 @@ main hr{
 .skillSection{
     position: relative;
     padding: 30px;
+    margin-top: 50px;
 }
 .skillSection h2{
     font-size: 55px;
@@ -256,7 +257,7 @@ nav ul img{
         flex-direction: column;
         justify-content: space-around;
         align-items: center;
-        transition: all 1s;
+        transition: all 1.5s ease-out;
     }
     nav ul a{
         color: black;

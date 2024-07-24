@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import impstyle from "../Main.module.css";
+import { NavLink } from 'react-router-dom';
 
 export default function Navbar() {
   const [isClick, setClick] = useState(true);
@@ -27,10 +28,10 @@ export default function Navbar() {
         <ul style={{
           right:isClick?"-100%":"10px"
         }} >
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">MiniProjects</a></li>
-          <li><a href="#">About Me</a></li>
-          <li><a href="#">About Us</a></li>
+          <li><NavLink to="/">Projects</NavLink></li>
+          <li><NavLink to="#">MiniProjects</NavLink></li>
+          <li><NavLink to="/skills">About Me</NavLink></li>
+          <li><NavLink to="#">About Us</NavLink></li>
         </ul>
       </nav>
     </header>
