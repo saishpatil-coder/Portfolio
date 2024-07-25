@@ -1,0 +1,180 @@
+/* Heading */
+h1 {
+    font-size: 40px;
+}
+
+/* Main container for the to-do application */
+.todo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 90px;
+}
+
+/* Top section of the application */
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form input styles */
+form input {
+    all: unset;
+    background-color: white;
+    color: black;
+    height: 40px;
+    width: 200px;
+    border-bottom-left-radius: 17px;
+    border-top-left-radius: 17px;
+    font-size: 25px;
+    padding-left: 10px;
+}
+
+/* Form button styles */
+form button {
+    all: unset;
+    text-align: center;
+    height: 40px;
+    width: 70px;
+    cursor: pointer;
+    background-color: rgb(140, 140, 233);
+    border-top-right-radius: 17px;
+    border-bottom-right-radius: 17px;
+    color: white;
+    position: absolute;
+    font-size: 20px;
+    top: 16px;
+}
+
+/* Container for input field */
+.input-field {
+    position: relative;
+    width: 280px;
+    margin-top: 30px;
+}
+
+/* Unordered list styling */
+/* ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 50px;
+    max-height: 50vh;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+} */
+
+ul::-webkit-scrollbar {
+    display: none;
+}
+
+/* List item styles */
+ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 47px;
+    margin: 12px 0px;
+    padding: 0 20px;
+    width: 240px;
+    font-size: 25px;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    text-transform: capitalize;
+    list-style-type: none;
+    overflow: hidden;
+}
+/* Container for the scrollable list */
+.scroll-container {
+    max-height: 50vh;
+    margin-top: 30px;
+    overflow-y: auto;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none; 
+}
+
+/* Unordered list styling */
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 20px; /* Adjust padding to prevent content clipping */
+}
+
+/* Button styles inside list items */
+.delete, .tick {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.delete {
+    background-color: red;
+}
+
+.tick {
+    background-color: green;
+}
+
+/* Paragraph inside list items */
+ul li p {
+    width: 180px;
+    overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+ul li p::-webkit-scrollbar {
+    display: none;
+}
+
+/* Container for icons */
+.icons {
+    display: flex;
+    gap: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Button to delete all items */
+.deleteAll {
+    all: unset;
+    margin-top: 20px;
+    background-color: red;
+    height: 40px;
+    width: 100px;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Date display */
+.date {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    font-size: 30px;
+}
+
+/* Checked and unchecked item styles */
+.check {
+    text-decoration: line-through;
+    background-color: grey;
+}
+
+.nocheck {
+    text-decoration: none;
+    background-color: white;
+}

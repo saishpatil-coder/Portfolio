@@ -28,10 +28,10 @@ export default function Navbar() {
         <ul style={{
           right:isClick?"-100%":"10px"
         }} >
-          <li><NavLink to="/">Projects</NavLink></li>
+          <li><NavLink to="/todo">Projects</NavLink></li>
           <li><NavLink to="/tictactoe">MiniProjects</NavLink></li>
           <li><NavLink to="/skills">About Me</NavLink></li>
-          <li><NavLink to="#">About Us</NavLink></li>
+          <li><NavLink to="/">About Us</NavLink></li>
         </ul>
       </nav>
     </header>

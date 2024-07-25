@@ -4,6 +4,7 @@ import Navbar from './Components/Head/Navbar';
 import Profile from './Components/Head/Profile';
 import Skills from './Components/Head/Skills';
 import TicTac from './Miniprojects/TicTacToe/TicTac';
+import Todo from './Miniprojects/projects/Todo'
 
 // Define the Float component
 const Float = () => {
@@ -24,7 +25,8 @@ function App() {
         { path: "skills", element: <Skills /> },
         // { path: "/", element: <Profile /> }
         { path: "/", element: <Profile></Profile> },
-        { path: "tictactoe" , element : <TicTac></TicTac>}
+        { path: "tictactoe" , element : <TicTac></TicTac>},
+        { path:"todo",element:<Todo></Todo>}
       ]
     }
   ]);
