@@ -6,7 +6,6 @@
     align-items: center;
     justify-content: center;
     position: relative;
-
 }
 .game-container>button{
     position: absolute;
@@ -45,7 +44,7 @@
 .row{
     display: flex;
 }
-.box{
+.row .box{
     height: 20vmin;
     width:20vmin;
     cursor: pointer;
@@ -55,7 +54,7 @@
 }
 
 @media (max-width:450px) {
-    .box{
+    .row .box{
         height: 30vmin;
         width: 30vmin;
         line-height: 24vmin;

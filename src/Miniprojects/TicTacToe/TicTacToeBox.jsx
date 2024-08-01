@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect } from 'react'
 import "./tictac.css";
 export default function TicTacToeBox({ turnX, setTurnX, setHeader, content, setContent, winner, setWinner, wonPattern, setWonPattern , count , setCount}) {
     let winPattern = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 4, 8], [2, 4, 6], [0, 3, 6], [1, 4, 7], [2, 5, 8]];
@@ -41,7 +41,6 @@ export default function TicTacToeBox({ turnX, setTurnX, setHeader, content, setC
         setHeader(!turnX ? "Turn X" : "Turn O");
         setTurnX(!turnX);
         setCount(count+1);
-        console.log(count)
     }
     let getId = (idx) => {
         return wonPattern.includes(idx) ? "checked" : "";

@@ -5,6 +5,7 @@ import Profile from './Components/Head/Profile';
 import Skills from './Components/Head/Skills';
 import TicTac from './Miniprojects/TicTacToe/TicTac';
 import Todo from './Miniprojects/projects/Todo'
+import Sudoku from './Components/sudoku/Sudoku';
 
 // Define the Float component
 const Float = () => {

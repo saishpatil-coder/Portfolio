@@ -5,7 +5,7 @@ import './Todo.css'
 
 export default function List({todo , checked , deleteTodo , handleCheck} ) {
   return (
-    <li className={checked ? "check":"nockeck"}>
+    <li className={checked ? "chek":"nockeck"}>
       <p >{todo}</p>
       <div className="icons">
         <div className="tick" onClick={()=>{
