@@ -13,63 +13,6 @@ body{
 h1{
     font-size: 3em;
 }
-.sudoku-container {
-    margin-top: 90px;
-    width: 100vw;
-    height: calc(100vh - 90px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.sudoku-container .boxes {
-    width: 500px; /* Fixed width */
-    height: 500px; /* Fixed height */
-    background-color: beige;
-    display: grid;
-    grid-template-columns: repeat(9, 1fr);
-    border: 2px solid black; /* Outer border */
-}
-
-
-.sudoku-container .rowDiv {
-    display: contents; /* Use display contents to make sure rows are not block elements */
-}
-.sudoku-container .inp {
-    height: 100%; /* Ensure the inputs take the full height of the grid cells */
-    width: 100%;  /* Ensure the inputs take the full width of the grid cells */
-    border: 1px solid black;
-    background-color: white;
-    text-align: center;
-    box-sizing: border-box;
-    color: black;
-    font-size: 22px;
-}
-
-.sudoku-container .inp:nth-child(3n+1) {
-    border-left: 2px solid black; /* Thick border for left edge of 3x3 grids */
-}
-
-.sudoku-container .inp:nth-child(3n) {
-    border-right: 2px solid black; /* Thick border for right edge of 3x3 grids */
-}
-
-.sudoku-container .inp:nth-of-type(n+1):nth-of-type(-n+9) {
-    border-top: 2px solid black; /* Thick border for top edge of 3x3 grids */
-}
-
-.sudoku-container .inp:nth-of-type(n+73):nth-of-type(-n+81) {
-    border-bottom: 2px solid black; /* Thick border for bottom edge of 3x3 grids */
-}
-
-.sudoku-container .inp:nth-of-type(3n+1) {
-    border-left: 2px solid black; /* Thick border for left edge of 3x3 grids */
-}
-
-.sudoku-container .inp:nth-of-type(3n) {
-    border-right: 2px solid black; /* Thick border for right edge of 3x3 grids */
-}
-
 nav{
     justify-content: space-between;
     min-height: 80px;
@@ -204,8 +147,6 @@ main {
 }
 main hr{
     position: absolute;
-    min-width: 98.7vw;
-    max-width: 98.7vw;
     bottom: 0;
 }
 
@@ -311,7 +252,7 @@ li{
     }
 
     .head{
-        width: 100vw;
+        width: 96vw;
         flex-direction: column;
         height: 80vh;
         transition: all 0.1s;
@@ -321,13 +262,16 @@ li{
         text-align: center;
         height: 100px;
     }
+    nav>ul>li:hover , nav>ul>li li:hover{
+        box-shadow: 0px 0px 5px white;
+    }
     nav ul li  a{
         width: 100%;
         color: white;
         font-weight: 600;
     }
     .info , .right{
-        width: 100vw;
+        width: 100%;
         height: 30vh;
         transition: all 0.1s;
     }
@@ -352,7 +296,6 @@ li{
         padding-left: 2px;
         padding-right: 2px;
         transition: all 0.1s;
-
     }
     .logo h1{
         font-size: 0.5em;
@@ -362,16 +305,15 @@ li{
         display: block;
         z-index: 300;
     }
-    nav >ul {
-        padding-top: 30px;
+    nav >ul{
         border: 2px solid white;
-        top: 60px;
+        top: -2px;
         right: -100%;
         background: linear-gradient(to right, rgb(0,0,33) 0%, rgb(0,0,33) 50%, rgb(0,0,75) 100%);
-        height: 70vh;
+        height: 100vh;
         border-radius: 9px;
         width: 210px;
-        font-size: 90px;
+        font-size: 100px;
         position: fixed;
         display: flex;
         flex-direction: column;
@@ -379,6 +321,10 @@ li{
         transition: all 1s ease-out;
         box-shadow: -1px 1px 10px rgb(0, 102, 255);
         z-index: 501;
+      }
+      nav>ul:hover{
+        box-shadow:0;
+
       }
     nav >ul img{
         display: block;
@@ -401,14 +347,17 @@ li{
         transition: background 0.3s ease, filter 0.3s ease;
       }
       ul li ul .drop>div{
-        width: 210px;
+        width: max-content;
       }
       nav>ul>li>.drop{
+        background-color:rgba(35, 35, 95,0.6);
         z-index: 212;
         right: 210px;
-        transform: translateY(-100px);
-        width: 140px;
+        transform: translateY(-86px);
+        width: 45vw;
+        height: 50vh;
         display: flex;
+        justify-content: space-around;
         border-top-left-radius: 3px;
         border-bottom-right-radius: 3px;
       }
@@ -417,6 +366,9 @@ li{
       }
       .drop li{
         width: 100%;
+        height: 90px;
+        display: flex;
+        align-items: center;
       }
       .miniprojectli{
         text-align: center;
@@ -445,7 +397,7 @@ li{
         width: 30vw;
     }
     main hr{
-        width: 98.5vw;
+        width: 9.5vw;
     }
     .logo{
         font-size: 40px;

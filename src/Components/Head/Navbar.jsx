@@ -29,10 +29,11 @@ export default function Navbar() {
           <ul style={{
             right: isClick ? "-100%" : "-10px"
           }} >
-            <li><NavLink to="/todo">Home</NavLink></li>
+            <li><NavLink to="/">Home</NavLink></li>
             <li className={impstyle.miniprojectli}><div>MiniProjects</div><ul className={impstyle.drop}>
               <li><NavLink to="/todo">Todo Application</NavLink></li>
               <li><NavLink to="/tictactoe">Tic Tac Toe</NavLink></li>
+              <li> <NavLink to="/payment">Payment Manager</NavLink> </li>
             </ul></li>
 
             <li><NavLink to="/skills">About Me</NavLink></li>

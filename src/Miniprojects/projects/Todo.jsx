@@ -4,7 +4,6 @@ import './Todo.css'
 import Input from './Input';
 import List from './List';
 import Datee from './Datee';
-import { json } from 'react-router-dom';
 const todoKey = "reactTodo"
 
 export default function Todo() {
