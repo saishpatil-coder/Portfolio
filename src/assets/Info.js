@@ -21,7 +21,7 @@ const skills = [
       image: "/projects/calculator.png"
     },
     {
-      title: "Todo App",
+      title: "To-do App",
       description: "A modern todo application with local storage, filtering capabilities, and beautiful timeline design",
       tech: ["React", "CSS", "LocalStorage"],
       link: "/todo",
