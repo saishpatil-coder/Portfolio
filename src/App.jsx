@@ -5,7 +5,10 @@ import 'aos/dist/aos.css';
 import './App.css';
 import Navbar from './Components/Head/Navbar';
 import Profile from './Components/Head/Profile';
-import { TicTac, Todo} from './Miniprojects';
+import { TicTac, Todo } from './Miniprojects';
+import Calculator from './Miniprojects/Calculator/Calculator';
+import Resume from './Components/Resume/Resume';
+import SmallResume from './Components/Resume/SmallResume';
 import { isdark } from './context/dark';
 import { useState, useEffect } from 'react';
 import AOS from 'aos';
@@ -16,7 +19,7 @@ import Projects from './Components/projects/Projects';
 
 
 const Float = () => {
-  
+
 
   useEffect(() => {
     AOS.init({
@@ -31,14 +34,21 @@ const Float = () => {
       <div className="profile-hero-bg">
         <Profile />
       </div>
-      
+
       {/* Projects Section */}
-      <Projects/>
+      <Projects />
 
       {/*Skill Section */}
-      <SkillSection/>
+      <SkillSection />
+
+      {/* Resume Section */}
+      <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 ">
+        <SmallResume />
+      </div>
+
+
       {/* Contact Section */}
-      
+
     </>
   );
 };
@@ -55,7 +65,7 @@ function App() {
           <div className={isDark ? 'bg-dark text-light' : 'bg-light text-dark'}>
             <Navbar />
             <Outlet />
-            <Footer/>
+            <Footer />
           </div>
         </isdark.Provider>
       ),
@@ -63,7 +73,9 @@ function App() {
         { path: "/", element: <Float /> },
         { path: "skills", element: <SkillSection /> },
         { path: "tictactoe", element: <TicTac /> },
-        { path: "todo", element: <Todo /> }
+        { path: "todo", element: <Todo /> },
+        { path: "calculator", element: <Calculator /> },
+        { path: "resume", element: <Resume /> }
       ]
     }
   ]);

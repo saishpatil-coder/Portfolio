@@ -1,8 +1,10 @@
 import React from 'react';
 import { FaCode, FaTrophy, FaGraduationCap, FaRocket, FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import SmallResume from '../Resume/SmallResume';
 
 export default function Profile() {
     return (
+        <>
         <div className="h-[100vh] pt-20 lg:pt-24 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative">
             <div className="relative z-10 container mx-auto px-4 py-6 lg:px-8 lg:py-12 max-w-6xl">
                 <div className="grid lg:grid-cols-2 gap-6 items-start lg:gap-8">
@@ -97,5 +99,6 @@ export default function Profile() {
                 </div>
             </div>
         </div>
+        </>
     );
 }

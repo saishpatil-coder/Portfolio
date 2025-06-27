@@ -13,25 +13,37 @@ const skills = [
 
   const projects = [
     {
+      title: "Calculator",
+      description: "A modern calculator with glassmorphism design, supporting basic arithmetic operations with beautiful animations",
+      tech: ["React", "CSS", "JavaScript"],
+      link: "/calculator",
+      githubLink: "https://github.com/saishpatil-coder/calculator",
+      image: "/projects/calculator.png"
+    },
+    {
       title: "Todo App",
-      description: "A modern todo application with local storage and filtering capabilities",
+      description: "A modern todo application with local storage, filtering capabilities, and beautiful timeline design",
       tech: ["React", "CSS", "LocalStorage"],
       link: "/todo",
+      githubLink: "https://github.com/saishpatil-coder/portfolio/tree/main/src/Miniprojects/projects",
       image: "/projects/todo.png"
     },
     {
       title: "Tic Tac Toe",
-      description: "Interactive game with win detection and game history",
+      description: "Interactive game with win detection, score tracking, and modern animations",
       tech: ["React", "JavaScript", "CSS"],
       link: "/tictactoe",
-      image: "/projects/CropConnect.png"
+      githubLink: "https://github.com/saishpatil-coder/portfolio/tree/main/src/Miniprojects/TicTacToe",
+      image: "/projects/tictac.png"
     },
     {
-      title: "Payment Gateway",
-      description: "Secure payment processing system with multiple payment options",
-      tech: ["React", "Node.js", "Stripe"],
-      link: "/payment",
-      image: "/react2.png"
+      title: "Agri-Connect",
+      description: "A smart contract farming platform that bridges the gap between farmers and buyers, ensuring fair trade, transparency, and income stability.",
+      tech: ["React", "Node.js", "Express", "MongoDB", "EJS", "CSS"],
+      link: null,
+      githubLink: "https://github.com/saishpatil-coder/AgriConnect",
+      image: "/projects/CropConnect.png"
     }
+    
   ];
   export { skills, projects };

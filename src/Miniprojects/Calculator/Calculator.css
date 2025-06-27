@@ -1,0 +1,326 @@
+/* Calculator Container */
+.calculator-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e293b, #334155, #475569);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  padding-top: 6rem; /* Space for navbar */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Pattern */
+.calculator-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Calculator Header */
+.calculator-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  z-index: 10;
+}
+
+.calculator-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.calculator-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+/* Calculator Body */
+.calculator {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  width: 320px;
+  z-index: 10;
+}
+
+/* Calculator Display */
+.calculator-display {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: right;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.calculator-expression {
+  min-height: 24px;
+  margin-bottom: 0.5rem;
+}
+
+.expression-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.calculator-screen {
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+/* Calculator Buttons */
+.calculator-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.calculator-btn {
+  border: none;
+  border-radius: 16px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.calculator-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.calculator-btn:hover::before {
+  opacity: 1;
+}
+
+.calculator-btn:active {
+  transform: scale(0.95);
+}
+
+/* Number Buttons */
+.number-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.number-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Function Buttons */
+.function-btn {
+  background: linear-gradient(135deg, #6b7280, #4b5563);
+  color: white;
+}
+
+.function-btn:hover {
+  background: linear-gradient(135deg, #4b5563, #374151);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(107, 114, 128, 0.3);
+}
+
+/* Operator Buttons */
+.operator-btn {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.operator-btn:hover {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+}
+
+.operator-btn.active {
+  background: linear-gradient(135deg, #10b981, #059669);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+}
+
+/* Equals Button */
+.equals-btn {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  color: white;
+}
+
+.equals-btn:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Zero Button (spans 2 columns) */
+.zero-btn {
+  grid-column: span 2;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .calculator-container {
+    padding: 1rem;
+    padding-top: 5rem;
+  }
+  
+  .calculator-title {
+    font-size: 2.5rem;
+  }
+  
+  .calculator {
+    width: 300px;
+    padding: 1.25rem;
+  }
+  
+  .calculator-display {
+    padding: 1.25rem;
+    min-height: 70px;
+  }
+  
+  .calculator-screen {
+    font-size: 2rem;
+  }
+  
+  .calculator-btn {
+    height: 55px;
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .calculator-container {
+    padding: 1rem;
+    padding-top: 4.5rem;
+  }
+  
+  .calculator-title {
+    font-size: 2rem;
+  }
+  
+  .calculator {
+    width: 280px;
+    padding: 1rem;
+  }
+  
+  .calculator-display {
+    padding: 1rem;
+    min-height: 60px;
+  }
+  
+  .calculator-screen {
+    font-size: 1.75rem;
+  }
+  
+  .calculator-btn {
+    height: 50px;
+    font-size: 1.1rem;
+  }
+  
+  .calculator-buttons {
+    gap: 8px;
+  }
+}
+
+/* Loading Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.calculator-container > * {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.calculator-container > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+/* Button Press Animation */
+@keyframes buttonPress {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.calculator-btn:active {
+  animation: buttonPress 0.1s ease-out;
+}
+
+/* Glow Effect for Active Operations */
+@keyframes operatorGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(16, 185, 129, 0.8);
+  }
+}
+
+.operator-btn.active {
+  animation: operatorGlow 2s ease-in-out infinite;
+}
+
+/* Display Number Animation */
+@keyframes numberPop {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.calculator-screen {
+  animation: numberPop 0.2s ease-out;
+} 
