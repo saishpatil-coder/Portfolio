@@ -1,47 +1,74 @@
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'aos/dist/aos.css';
 import './App.css';
 import Navbar from './Components/Head/Navbar';
 import Profile from './Components/Head/Profile';
-import Skills from './Components/Head/Skills';
-import TicTac from './Miniprojects/TicTacToe/TicTac';
-import Todo from './Miniprojects/projects/Todo'
-import Payment from './Miniprojects/Payment/Payment';
-import { isdark } from './Components/context/dark';
-import { useState } from 'react';
+import { TicTac, Todo} from './Miniprojects';
+import { isdark } from './context/dark';
+import { useState, useEffect } from 'react';
+import AOS from 'aos';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaCode, FaLaptopCode, FaArrowRight, FaDownload, FaExternalLinkAlt } from 'react-icons/fa';
+import SkillSection from './Components/skills/SkillSection';
+import Footer from './Components/foot/Footer';
+import Projects from './Components/projects/Projects';
+
+
 const Float = () => {
+  
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      offset: 100
+    });
+  }, []);
+
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <div className="profile-hero-bg">
+        <Profile />
+      </div>
+      
+      {/* Projects Section */}
+      <Projects/>
+
+      {/*Skill Section */}
+      <SkillSection/>
+      {/* Contact Section */}
+      
     </>
   );
 };
 
 function App() {
+  const [isDark, setISDark] = useState(false);
+  let setDark = () => setISDark(!isDark);
+
   let router = createBrowserRouter([
     {
       path: "/",
-      element: <Float />, // Use the Float component here
+      element: (
+        <isdark.Provider value={{ isDark, setDark }}>
+          <div className={isDark ? 'bg-dark text-light' : 'bg-light text-dark'}>
+            <Navbar />
+            <Outlet />
+            <Footer/>
+          </div>
+        </isdark.Provider>
+      ),
       children: [
-        { path: "skills", element: <Skills /> },
-        { path: "payment", element: <Payment></Payment> },
-        { path: "/", element: <Profile></Profile> },
-        { path: "tictactoe" , element : <TicTac></TicTac>},
-        { path:"todo",element:<Todo></Todo>}
+        { path: "/", element: <Float /> },
+        { path: "skills", element: <SkillSection /> },
+        { path: "tictactoe", element: <TicTac /> },
+        { path: "todo", element: <Todo /> }
       ]
     }
   ]);
-const [isDark , setISDark] = useState(true);
-let setDark = ()=>{
-  setISDark(!isDark);
-}
-  return (
-    <>
-    <isdark.Provider value={{isDark , setDark}}>
-      <RouterProvider router={router} />
-      </isdark.Provider>
-    </>
-  );
+
+  return <RouterProvider router={router} />;
 }
 
 export default App;
