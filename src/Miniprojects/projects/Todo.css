@@ -8,7 +8,14 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 90px;
+    max-width: 500px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
 }
 
 /* Top section of the application */
@@ -16,45 +23,103 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
 }
 
 /* Form input styles */
 .todo-container form input {
     all: unset;
-    background-color: white;
-    color: black;
-    height: 40px;
-    width: 200px;
-    border-bottom-left-radius: 17px;
-    border-top-left-radius: 17px;
-    font-size: 25px;
-    padding-left: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    height: 50px;
+    width: 250px;
+    border-radius: 12px 0 0 12px;
+    font-size: 16px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.todo-container form input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.todo-container form input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 /* Form button styles */
 .todo-container form button {
     all: unset;
     text-align: center;
-    height: 40px;
-    width: 70px;
+    height: 50px;
+    width: 80px;
     cursor: pointer;
-    background-color: rgb(140, 140, 233);
-    border-top-right-radius: 17px;
-    border-bottom-right-radius: 17px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 0 12px 12px 0;
     color: white;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-left: none;
+}
+
+.todo-container form button:hover {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+.todo-container form button:active {
+    transform: translateY(0);
 }
 
 /* Container for input field */
 .input-field {
-    width: 280px;
-    margin-top: 30px;
+    width: 330px;
     display: flex;
+    margin-top: 1.5rem;
 }
 
+/* Container for the scrollable list */
+.scroll-container {
+    max-height: 400px;
+    width: 100%;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+    padding-right: 8px;
+}
 
-.todo-container ul::-webkit-scrollbar {
-    display: none;
+.scroll-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    border-radius: 3px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+/* Unordered list styling */
+.todo-container ul {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* List item styles */
@@ -62,37 +127,55 @@ h1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 47px;
-    margin: 12px 0px;
+    min-height: 60px;
     padding: 0 20px;
-    width: 240px;
-    font-size: 25px;
-    border-radius: 20px;
-    background-color: white;
-    color: black;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    color: white;
     text-transform: capitalize;
-    list-style-type: none;
-    overflow: hidden;
-}
-/* Container for the scrollable list */
-.scroll-container {
-    max-height: 50vh;
-    margin-top: 30px;
-    overflow-y: auto;
-    -ms-overflow-style: none; 
-    scrollbar-width: none; 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
 }
 
-.scroll-container::-webkit-scrollbar {
-    display: none; 
+.todo-container ul li:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(59, 130, 246, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Unordered list styling */
-.todo-container ul {
+/* Paragraph inside list items */
+.todo-container ul li p {
+    flex: 1;
+    margin: 0;
+    padding: 0 12px;
+    overflow-x: auto;
+    word-break: break-word;
+    line-height: 1.5;
+}
+
+.todo-container ul li p::-webkit-scrollbar {
+    height: 3px;
+}
+
+.todo-container ul li p::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.todo-container ul li p::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.5);
+    border-radius: 2px;
+}
+
+/* Container for icons */
+.icons {
     display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding-right: 20px; /* Adjust padding to prevent content clipping */
+    gap: 12px;
+    align-items: center;
 }
 
 /* Button styles inside list items */
@@ -100,51 +183,78 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 30px;
-    width: 30px;
-    border-radius: 50%;
+    height: 36px;
+    width: 36px;
+    border-radius: 8px;
     cursor: pointer;
+    border: none;
+    transition: all 0.3s ease;
+    font-size: 14px;
 }
 
 .delete {
-    background-color: red;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.delete:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
 }
 
 .tick {
-    background-color: green;
-}
-
-/* Paragraph inside list items */
-.todo-container ul li p {
-    width: 180px;
-    overflow-x: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.todo-container ul li p::-webkit-scrollbar {
-    display: none;
-}
-
-/* Container for icons */
-.icons {
-    display: flex;
-    gap: 20px;
+    background: linear-gradient(135deg, #10b981, #059669);
     color: white;
-    cursor: pointer;
+}
+
+.tick:hover {
+    background: linear-gradient(135deg, #059669, #047857);
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* Checked and unchecked item styles */
+.todo-container ul .chek {
+    text-decoration: line-through;
+    background: rgba(16, 185, 129, 0.15);
+    border-color: rgba(16, 185, 129, 0.3);
+    opacity: 0.7;
+}
+
+.todo-container ul .chek p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.nocheck {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.08);
 }
 
 /* Button to delete all items */
 .deleteAll {
     all: unset;
-    margin-top: 20px;
-    background-color: red;
-    height: 40px;
-    width: 100px;
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    height: 45px;
+    width: 120px;
     text-align: center;
-    border-radius: 30px;
+    border-radius: 12px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.deleteAll:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.deleteAll:active {
+    transform: translateY(0);
 }
 
 /* Date display */
@@ -152,17 +262,74 @@ h1 {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    font-size: 30px;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Checked and unchecked item styles */
-.todo-container ul .chek {
-    text-decoration: line-through;
-    background-color: grey;
-
+/* Responsive design */
+@media (max-width: 640px) {
+    .todo-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .input-field {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .todo-container form input {
+        width: 200px;
+    }
+    
+    .todo-container form button {
+        width: 70px;
+    }
+    
+    .date {
+        bottom: 20px;
+        right: 20px;
+        font-size: 18px;
+        padding: 8px 16px;
+    }
 }
 
-.nocheck {
-    text-decoration: none;
-    background-color: white;
+/* Animation for new items */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.todo-container ul li {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Empty state styling */
+.todo-container .empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.todo-container .empty-state h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.todo-container .empty-state p {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.5);
 }

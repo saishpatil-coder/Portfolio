@@ -17,14 +17,14 @@ const skills = [
       description: "A modern todo application with local storage and filtering capabilities",
       tech: ["React", "CSS", "LocalStorage"],
       link: "/todo",
-      image: "/react.png"
+      image: "/projects/todo.png"
     },
     {
       title: "Tic Tac Toe",
       description: "Interactive game with win detection and game history",
       tech: ["React", "JavaScript", "CSS"],
       link: "/tictactoe",
-      image: "/js.png"
+      image: "/projects/CropConnect.png"
     },
     {
       title: "Payment Gateway",
