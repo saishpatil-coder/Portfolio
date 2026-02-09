@@ -5,158 +5,123 @@ import ProjectCard from "./ProjectCard";
 import { projects } from "../../assets/Info";
 
 const Projects = () => {
-  // Hook to detect when section header is in view
   const { ref: sectionRef, inView: sectionInView } = useInView({
-    triggerOnce: false,
-    threshold: 0.2,
+    triggerOnce: true,
+    threshold: 0.1,
   });
-
-  // Animation variants for project cards
-  const cardVariants = {
-    hidden: { opacity: 0, x: (index) => (index % 2 === 0 ? -100 : 100), scale: 0.95 },
-    show: { 
-      opacity: 1, 
-      x: 0, 
-      scale: 1,
-      transition: { 
-        duration: 0.8, 
-        ease: "easeOut",
-        opacity: { duration: 0.6 },
-        x: { duration: 0.8, ease: [0.6, 0, 0.2, 1] },
-        scale: { duration: 0.6 },
-      }
-    },
-  };
 
   return (
     <section
       id="projects"
-      className="py-16 md:py-24 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 relative overflow-hidden"
+      className="relative py-20 px-4 overflow-hidden"
     >
-      {/* Background Effect with Subtle Animation */}
-      <motion.div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        animate={{
-          backgroundPosition: ["0% 0%", "100% 100%"],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "reverse",
-        }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.2) 2px, transparent 0)`,
-            backgroundSize: "40px 40px",
-          }}
-        ></div>
-      </motion.div>
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900" />
+      
+      {/* Floating Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-pink-500/5 rounded-full blur-3xl animate-pulse delay-500" />
+      
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <svg
+          className="w-full h-full"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <pattern
+              id="projects-grid"
+              width="20"
+              height="20"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 20 0 L 0 0 0 20"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="0.5"
+              />
+            </pattern>
+          </defs>
+          <rect width="100" height="100" fill="url(#projects-grid)" />
+        </svg>
+      </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header with Animation */}
+      <div className="relative max-w-7xl mx-auto">
+        {/* Section Header */}
         <motion.div
           ref={sectionRef}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 50 }}
           animate={sectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-4">
-            My{" "}
-            <motion.span
-              className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
-              animate={{ backgroundPosition: ["0%", "200%"] }}
-              transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
-              style={{ backgroundSize: "200%" }}
-            >
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            Featured{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400">
               Projects
-            </motion.span>
+            </span>
           </h2>
           <motion.p
-            className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto"
+            className="text-slate-400 text-xl max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={sectionInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ delay: 0.5, duration: 1 }}
+            transition={{ delay: 0.3, duration: 0.8 }}
           >
-            Discover my latest creations that blend innovation, design, and technology
+            Explore my latest work showcasing modern web development, 
+            innovative design, and cutting-edge technologies
           </motion.p>
         </motion.div>
 
-        {/* Timeline Container */}
-        <div className="relative">
-          {/* Central Timeline Line (Static) */}
-          <div
-            className="hidden md:block absolute left-1/2 transform -translate-x-1/2 w-1.5 bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 h-full rounded-full"
-          ></div>
+        {/* Projects Grid */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={sectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              animate={sectionInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 30, scale: 0.95 }}
+              transition={{ 
+                duration: 0.6, 
+                delay: 0.7 + index * 0.1,
+                ease: "easeOut"
+              }}
+            >
+              <ProjectCard {...project} />
+            </motion.div>
+          ))}
+        </motion.div>
 
-          {/* Projects */}
-          <div className="space-y-12 md:space-y-16">
-            {projects.map((project, index) => {
-              // Individual inView hook for each project card
-              const { ref: cardRef, inView: cardInView } = useInView({
-                triggerOnce: false,
-                threshold: 0.3, // Trigger when 30% of card is visible
-              });
-
-              return (
-                <div key={index} className="relative" ref={cardRef}>
-                  {/* Timeline Node with Glow Effect (Centered Horizontally) */}
-                  <motion.div
-                    className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-[50%] -translate-y-1/2 w-5 h-5 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full border-4 border-gray-900 shadow-md"
-                    style={{ left: "calc(50% - 2.5px)" }}
-                    animate={
-                      cardInView
-                        ? {
-                            boxShadow: [
-                              "0 0 10px rgba(59, 130, 246, 0.5)",
-                              "0 0 20px rgba(59, 130, 246, 0.8)",
-                              "0 0 10px rgba(59, 130, 246, 0.5)",
-                            ],
-                          }
-                        : { boxShadow: "0 0 10px rgba(59, 130, 246, 0.5)" }
-                    }
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                  ></motion.div>
-
-                  {/* Project Card with Symmetrical Placement */}
-                  <div className="relative flex justify-center md:grid md:grid-cols-[1fr_auto_1fr] gap-8">
-                    {index % 2 === 0 ? (
-                      <>
-                        <motion.div
-                          className="max-w-md md:max-w-xl w-full md:mx-auto md:pr-12"
-                          variants={cardVariants}
-                          custom={index}
-                          initial="hidden"
-                          animate={cardInView ? "show" : "hidden"}
-                        >
-                          <ProjectCard {...project} />
-                        </motion.div>
-                        <div className="hidden md:block"></div> {/* Spacer for timeline */}
-                        <div className="hidden md:block"></div> {/* Empty right column */}
-                      </>
-                    ) : (
-                      <>
-                        <div className="hidden md:block"></div> {/* Empty left column */}
-                        <div className="hidden md:block"></div> {/* Spacer for timeline */}
-                        <motion.div
-                          className="max-w-md md:max-w-xl w-full md:mx-auto md:pl-12"
-                          variants={cardVariants}
-                          custom={index}
-                          initial="hidden"
-                          animate={cardInView ? "show" : "hidden"}
-                        >
-                          <ProjectCard {...project} />
-                        </motion.div>
-                      </>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+        {/* Call to Action */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={sectionInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+        >
+          <div className="inline-flex items-center gap-4 bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl px-8 py-4">
+            <span className="text-slate-300 text-lg">
+              Want to see more?
+            </span>
+            <a
+              href="https://github.com/saishpatil-coder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-6 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/40 transition-all duration-300 flex items-center gap-2"
+            >
+              View GitHub
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

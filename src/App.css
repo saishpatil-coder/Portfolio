@@ -791,3 +791,43 @@ section {
 .animate-pulse {
   animation: pulse 1.5s ease-in-out infinite;
 }
+
+.circuit-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 2px, transparent 0),
+    radial-gradient(circle at 75% 75%, rgba(16, 185, 129, 0.1) 2px, transparent 0);
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+
+.hologram-effect {
+  background: linear-gradient(45deg, transparent 30%, rgba(59, 130, 246, 0.1) 50%, transparent 70%);
+  background-size: 20px 20px;
+  animation: hologram-move 3s linear infinite;
+}
+
+@keyframes hologram-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 15s linear infinite;
+}

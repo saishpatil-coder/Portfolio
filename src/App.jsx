@@ -7,6 +7,7 @@ import Navbar from './Components/Head/Navbar';
 import Profile from './Components/Head/Profile';
 import { TicTac, Todo } from './Miniprojects';
 import Calculator from './Miniprojects/Calculator/Calculator';
+import CurrencyConverter from './Miniprojects/CurrencyConverter/CurrencyConverter';
 import Resume from './Components/Resume/Resume';
 import SmallResume from './Components/Resume/SmallResume';
 import { isdark } from './context/dark';
@@ -17,10 +18,7 @@ import SkillSection from './Components/skills/SkillSection';
 import Footer from './Components/foot/Footer';
 import Projects from './Components/projects/Projects';
 
-
 const Float = () => {
-
-
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -45,10 +43,6 @@ const Float = () => {
       <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 ">
         <SmallResume />
       </div>
-
-
-      {/* Contact Section */}
-
     </>
   );
 };
@@ -75,6 +69,7 @@ function App() {
         { path: "tictactoe", element: <TicTac /> },
         { path: "todo", element: <Todo /> },
         { path: "calculator", element: <Calculator /> },
+        { path: "currency", element: <CurrencyConverter /> },
         { path: "resume", element: <Resume /> }
       ]
     }

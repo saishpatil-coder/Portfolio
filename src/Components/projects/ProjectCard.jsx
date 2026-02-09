@@ -1,94 +1,97 @@
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { FaExternalLinkAlt, FaGithub, FaArrowRight } from "react-icons/fa";
 import { motion } from "framer-motion";
 import React from "react";
 
 const ProjectCard = ({ title, description, tech, link, githubLink, image }) => (
   <motion.div
-    className="group w-full max-w-md mx-auto"
-    whileHover={{ y: -12, scale: 1.02 }}
-    transition={{ duration: 0.4, ease: "easeOut" }}
+    className="group relative w-full max-w-md mx-auto"
+    whileHover={{ y: -8, scale: 1.02 }}
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
   >
-    <div className="bg-gray-800/50 backdrop-blur-md rounded-xl overflow-hidden border border-gray-700 hover:border-blue-500/50 transition-all duration-500 shadow-lg hover:shadow-blue-500/30 h-full flex flex-col">
-      {/* Image Container with Parallax Effect */}
-      <div className="relative overflow-hidden h-52">
+    {/* Glow Effect */}
+    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-cyan-500/20 to-pink-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+    
+    {/* Main Card */}
+    <div className="relative bg-slate-800/40 backdrop-blur-xl rounded-2xl overflow-hidden border border-slate-700/50 hover:border-slate-600/50 transition-all duration-500 shadow-xl hover:shadow-2xl h-full flex flex-col">
+      {/* Image Container */}
+      <div className="relative overflow-hidden h-56">
         <motion.img
           src={image || "/fallback-image.jpg"}
-          className="w-full h-full object-cover transition-transform duration-700"
+          className="w-full h-full object-cover"
           alt={title}
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.7 }}
         />
-        {/* Overlay with Buttons and Fade-In Effect */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/40 to-transparent flex items-end justify-center pb-4"
-          initial={{ opacity: 0, y: 20 }}
-          whileHover={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          <div className="flex gap-3">
-            {link && (
-              <motion.a
-                href={link}
-                className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-4 py-2 rounded-md text-sm font-semibold hover:shadow-lg hover:shadow-blue-500/40 transition-all duration-300 flex items-center gap-2"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FaExternalLinkAlt className="text-xs" /> Demo
-              </motion.a>
-            )}
-            {githubLink && (
-              <motion.a
-                href={githubLink}
-                className="bg-gray-700/70 backdrop-blrt-sm text-white px-4 py-2 rounded-md text-sm font-semibold hover:bg-gray-600/70 hover:shadow-lg hover:shadow-purple-500/40 transition-all duration-300 flex items-center gap-2"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <FaGithub className="text-xs" /> Code
-              </motion.a>
-            )}
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
+        
+        {/* Tech Stack Badge */}
+        <div className="absolute top-4 left-4">
+          <div className="bg-slate-900/80 backdrop-blur-sm px-3 py-1 rounded-full border border-slate-600/50">
+            <span className="text-xs font-medium text-slate-300">{tech.length} Tech</span>
           </div>
-        </motion.div>
+        </div>
+        
+        {/* Action Buttons */}
+        <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+          {link && (
+            <motion.a
+              href={link}
+              className="bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-purple-500/40 transition-all duration-300 flex items-center gap-2"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaExternalLinkAlt className="text-sm" /> Live Demo
+            </motion.a>
+          )}
+          {githubLink && (
+            <motion.a
+              href={githubLink}
+              className="bg-slate-800/80 backdrop-blur-sm text-white px-6 py-3 rounded-xl font-semibold hover:bg-slate-700/80 hover:shadow-lg transition-all duration-300 flex items-center gap-2 border border-slate-600/50"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <FaGithub className="text-sm" /> Code
+            </motion.a>
+          )}
+        </div>
       </div>
 
-      {/* Content Container with Text Animations */}
+      {/* Content Container */}
       <div className="p-6 flex-1 flex flex-col">
-        <motion.h3
-          className="text-xl font-bold text-white mb-3 group-hover:text-blue-300 transition-colors duration-300"
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+        {/* Title */}
+        <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300 flex items-center justify-between">
           {title}
-        </motion.h3>
-        <motion.p
-          className="text-gray-300 mb-4 leading-relaxed text-sm flex-1"
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
+          <FaArrowRight className="text-sm text-slate-500 group-hover:text-cyan-400 transition-colors duration-300 transform group-hover:translate-x-1" />
+        </h3>
+        
+        {/* Description */}
+        <p className="text-slate-300 mb-6 leading-relaxed text-sm flex-1">
           {description}
-        </motion.p>
-        <motion.div
-          className="flex flex-wrap gap-2 mt-auto"
-          initial={{ y: 10, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
+        </p>
+        
+        {/* Tech Stack */}
+        <div className="flex flex-wrap gap-2 mt-auto">
           {tech.map((item, index) => (
-            <motion.span
+            <span
               key={index}
-              className="px-3 py-1 bg-gray-700/50 text-gray-200 text-xs font-medium rounded-full border border-gray-600 hover:bg-blue-500/20 hover:border-blue-500/50 transition-all duration-300"
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(59, 130, 246, 0.3)" }}
+              className="px-3 py-1.5 bg-slate-700/50 text-slate-200 text-xs font-medium rounded-lg border border-slate-600/50 hover:bg-gradient-to-r hover:from-purple-500/20 hover:to-cyan-500/20 hover:border-purple-500/50 transition-all duration-300"
             >
               {item}
-            </motion.span>
+            </span>
           ))}
-        </motion.div>
+        </div>
       </div>
+      
+      {/* Bottom Glow Line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
     </div>
   </motion.div>
 );
